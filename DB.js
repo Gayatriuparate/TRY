@@ -13,11 +13,6 @@ con.connect(function (err) {
     console.log("Connected!");
 });
 
-//create a server object:
-// http.createServer(function (req, res) {
-//   res.write('Hello World!'); //write a response to the client
-//   res.end(); //end the response
-// }).listen(8080); //the server object listens on port 8080
 let insertStatement = (data, callback) => {
     var sql = `INSERT INTO demo values(null, '${data.username}')`;
     con.query(sql, function (err, result) {
@@ -26,5 +21,13 @@ let insertStatement = (data, callback) => {
         console.log("data added");
     });
 };
+let selectStatement = (email, cb) => {
+    var sql = `select name from demo`;
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        cb(result);
+        console.log("data catched")
+    });
+};
 
-module.exports = { insertStatement};
+module.exports = { insertStatement,selectStatement};

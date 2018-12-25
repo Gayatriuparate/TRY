@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <textarea id="username"></textarea>
-        <button id=TRY onclick="validate();">send</button>
-    </head>
+
+<head>
+    <textarea id="username"></textarea>
+    <button id=TRY onclick="validate();">send</button>
+    <textarea id="fetch"></textarea>
+     <button id=CATCH onclick="fetche();">CATCH</button> 
+</head>
+
 </html>
-    <body>
+
+<body>
     </form>
     <script type="text/javascript">
         function validate() {
             let username = document.getElementById("username");
-                var oReq = new XMLHttpRequest();
-                oReq.open('POST', '/valReq', true);
-                //Send the proper header information along with the request
-                oReq.setRequestHeader('Content-type', 'text/plain');
-                let params = { username: username.value}
-                oReq.onreadystatechange = function () {//Call a function when the state changes.
-                    // if (oReq.readyState == 4 && oReq.status == 200) {
-                    //     if (oReq.responseText == "success") {
-                    //         sessionStorage.setItem("lastname", username.value.toString());
-                    //         window.location = "/index.html";
-                    //     } else {
-                    //         alert("Invalid username or password");
-                    //     }
-                    // }
-               // }
-                oReq.send(JSON.stringify(params));
-            }
-        }
-    </script>
-    </body>
-    
+            var oReq = new XMLHttpRequest();
+            oReq.open('POST', '/valReq', true);
 
+            oReq.setRequestHeader('Content-type', 'text/plain');
+            let params = { username: username.value }
+            oReq.onreadystatechange = function () {
+            }
+            oReq.send(JSON.stringify(params));
+        }
+        function fetche() {
+            let username = document.getElementById("username");
+            var oReq = new XMLHttpRequest();
+            oReq.open('POST', '/fetchReq', true);
+
+            oReq.setRequestHeader('Content-type', 'text/plain');
+            let params = { username: username.value }
+            oReq.onreadystatechange = function () {
+            }
+            oReq.send(JSON.stringify(params));
+        }
+        
+    </script>
+</body>
